@@ -28,6 +28,9 @@ def main():
         raise SystemExit("vow must be a single line")
     if not line.strip():
         raise SystemExit("vow must not be only whitespace")
+    if line[-1] not in ".!?":
+        raise SystemExit("vow must end with sentence-ending punctuation "
+                         "so it lands when read aloud")
 
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
